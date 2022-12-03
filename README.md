@@ -1,5 +1,5 @@
-# polygon-fauna-app
-👋 Hello! This app is a demo app to show how Polygon, Fauna, and React can work together to help safeguard your dApp data. This example uses the concept of Allowlisting to demonstrate this functionality in a dApp.
+# terrafir-ma-sk
+👋 Hello! Terrafir-ma-sk is an dApp which addresses the problem of land disputes in India due to overlapping parts in land contracts.
 
 View the flow of the app in the diagram below:
 
