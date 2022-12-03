@@ -73,3 +73,25 @@ label {
   font-size: 14px;
   margin: 20px 0px;
 }
+
+.claimDiv {
+  background-color: #000000;
+}
+
+.claimButton {
+  background-color: #000000;
+  cursor: pointer;
+  color: yellow;
+  font-family: sans-serif;
+  font-size: 30px;
+  margin: 20px 0px;  
+  padding: 10px;
+  border-radius:12px;
+  border-color:yellow;
+}
+
+.claimButton:hover {
+  background-color: yellow;
+  color: #000000;
+  border: none;
+}

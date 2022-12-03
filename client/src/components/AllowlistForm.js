@@ -16,6 +16,11 @@ export default function AllowlistForm(props) {
   const [walletAddress, setWalletAddress] = useState("");
   const [formSuccess, setFormSuccess] = useState(false);
   const [formFail, setFormFail] = useState(false);
+  const [land, setLand] = useState([]);
+
+  const landHandler = (newLand) => {
+    setLand(newLand);
+  };
 
   useEffect(() => {
     register("firstName", { required: true });
@@ -64,9 +69,19 @@ export default function AllowlistForm(props) {
       });
   }
 
+  const submitLand = () => {
+    if (land.length===0) {
+      alert("No Land selected");
+      return;
+    }
+
+    console.log(land);
+    alert('Thanks. This land belongs to you now');
+  }
+
   return (
     <div className="wrapper">
-      {formSuccess && (
+      {/* {formSuccess && (
         <div className="successMessage">
           <p>
             Successfully submitted allowlist entry for{" "}
@@ -118,8 +133,11 @@ export default function AllowlistForm(props) {
           </span>
         )}
         <input type="submit" className="submitButton" />
-      </form>
-      <MapPage />
+      </form> */}
+      <div className="claimDiv">
+        <button className="claimButton" onClick={submitLand}>Claim Land</button>
+      </div>
+      <MapPage landHandler={landHandler} />
     </div>
   );
 }

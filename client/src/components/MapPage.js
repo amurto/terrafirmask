@@ -8,13 +8,15 @@ const Map = ReactMapboxGl({
     "pk.eyJ1IjoiYW11cnRvIiwiYSI6ImNsYjdyNzFpODBidnAzdmxrNGxlN2NhZjIifQ.P3gkHZS63hN_k5N3_w-k5Q",
 });
 
-const MapPage = () => {
+const MapPage = ({landHandler}) => {
   const onDrawCreate = ({ features }) => {
     console.log(features);
+    landHandler(features[0].geometry.coordinates);
   };
 
   const onDrawUpdate = ({ features }) => {
     console.log({ features });
+    landHandler(features[0].geometry.coordinates);
   };
 
   const geojson = {
