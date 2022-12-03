@@ -1,5 +1,5 @@
 require("dotenv").config(); // Load .env file
-export async function addDocument(uuid, firstName, lastName, walletAddress) {
+export async function addDocument(uuid, firstName, lastName, landCoords, walletAddress) {
   const faunadb = require("faunadb");
   const q = faunadb.query;
   const client = new faunadb.Client({

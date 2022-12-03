@@ -41,7 +41,13 @@ export default function AllowlistForm(props) {
       }
     }
     // add stuff to Fauna
-    await addDocument(uuid, data.firstName, data.lastName, data.walletAddress)
+    await addDocument(
+      uuid,
+      data.firstName,
+      data.lastName,
+      land,
+      data.walletAddress
+    )
       .then((res) => {
         if (!res.ok && res.status >= 400) {
           setFormFail(true);
@@ -70,37 +76,34 @@ export default function AllowlistForm(props) {
   }
 
   const submitLand = () => {
-    if (land.length===0) {
+    if (land.length === 0) {
       alert("No Land selected");
       return;
     }
 
     console.log(land);
-    alert('Thanks. This land belongs to you now');
-  }
+    alert("Congrats! Now this land belongs to you now");
+  };
 
   return (
     <div className="wrapper">
-      {/* {formSuccess && (
+      <div className="titleDiv">Terrafirmask</div>
+      {formSuccess && (
         <div className="successMessage">
           <p>
-            Successfully submitted allowlist entry for{" "}
+            Successfully submitted land entry for{" "}
             {firstName + " " + lastName} with wallet address {walletAddress}!
           </p>
         </div>
       )}
       {formFail && (
         <div className="errorMessage">
-          <p>Failed to submit allowlist entry. Please try again.</p>
+          <p>Failed to submit land entry. Please try again.</p>
         </div>
       )}
       <form onSubmit={handleSubmit((data) => submitForm(data))}>
         <div className="header">
-          <h1>Allowlist Form</h1>
-          <p>
-            Please fill out this form to get allowlisted for this exclusive
-            project.
-          </p>
+          <h1>Claim a Land</h1>
         </div>
         <label htmlFor="firstName">First Name</label>
         <input
@@ -132,11 +135,8 @@ export default function AllowlistForm(props) {
             Wallet address is required.
           </span>
         )}
-        <input type="submit" className="submitButton" />
-      </form> */}
-      <div className="claimDiv">
-        <button className="claimButton" onClick={submitLand}>Claim Land</button>
-      </div>
+        <input type="submit" className="claimButton" />
+      </form>
       <MapPage landHandler={landHandler} />
     </div>
   );
