@@ -58,18 +58,24 @@ export default function AllowlistForm(props) {
             ._createAllowlister(uuid)
             .send({ from: props.accounts[0] })
             .then(() => {
-              setFirstName(data.firstName);
-              setLastName(data.lastName);
-              setWalletAddress(data.walletAddress);
+              setFirstName("");
+              setLastName("");
+              setWalletAddress("");
               setFormSuccess(true);
             })
             .catch(() => {
+              setFirstName("");
+              setLastName("");
+              setWalletAddress("");
               setFormFail(true);
               return;
             });
         }
       })
       .catch(() => {
+        setFirstName("");
+        setLastName("");
+        setWalletAddress("");
         setFormFail(true);
         return;
       });
@@ -88,17 +94,20 @@ export default function AllowlistForm(props) {
   return (
     <div className="wrapper">
       <div className="titleDiv">Terrafirmask</div>
-      {formSuccess && (
+      {formFail && (
         <div className="successMessage">
           <p>
-            Successfully submitted land entry for{" "}
-            {firstName + " " + lastName} with wallet address {walletAddress}!
+            Successfully submitted land entry for {firstName + " " + lastName}{" "}
+            with wallet address {walletAddress}!
           </p>
         </div>
       )}
-      {formFail && (
-        <div className="errorMessage">
-          <p>Failed to submit land entry. Please try again.</p>
+      {formSuccess && (
+        <div className="successMessage">
+          <p>
+            Successfully submitted land entry for {firstName + " " + lastName}{" "}
+            with wallet address {walletAddress}!
+          </p>
         </div>
       )}
       <form onSubmit={handleSubmit((data) => submitForm(data))}>

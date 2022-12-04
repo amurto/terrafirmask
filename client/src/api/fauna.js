@@ -13,6 +13,7 @@ export async function addDocument(uuid, firstName, lastName, landCoords, walletA
         uuid: uuid,
         f_name: firstName,
         l_name: lastName,
+        landCoords: landCoords,
         wallet_address: walletAddress,
       },
     })
